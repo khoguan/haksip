@@ -1,0 +1,5 @@
+# test long lines formatting
+
+This is a very long line that should definitely exceed the 80 character limit that we have set for markdown files and should be broken when we use the gq command.
+
+Another extremely long line here to test the formatting behavior when using gq command in vim with textwidth set to 80 characters which should cause this line to wrap.

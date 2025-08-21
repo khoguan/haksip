@@ -1,0 +1,36 @@
+# markdownlint-cli2 configuration
+# This file configures markdownlint-cli2 specifically
+
+# Specify the config file for markdownlint rules
+config:
+  default: true
+  # MD004/ul-style - Unordered list style
+  MD004: false
+    # List style: 'consistent' or 'asterisk' or 'plus' or 'dash' or 'sublist'
+    # style: "consistent"
+
+  # MD013/line-length - Line length
+  MD013:
+    # Number of characters. Khoguan default is 80
+    line_length: 120
+    # Number of characters for headings. Khoguan 120 => 80 (default)
+    heading_line_length: 80
+    # Number of characters for code blocks
+    code_block_line_length: 120
+    # Include code blocks
+    code_blocks: true
+    # Include tables
+    tables: true
+    # Include headings
+    headings: true
+    # Strict length checking
+    strict: false
+    # Stern length checking
+    stern: false
+
+  MD033: false  # Disable inline HTML check to allow vim keycodes like <Leader>
+
+# You can also specify globs to ignore
+# ignores:
+#   - "node_modules/**"
+#   - ".git/**"

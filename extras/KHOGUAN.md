@@ -13,6 +13,7 @@
 ## astrodark theme
 
 ### for markdown
+
 1. 無仝層次个標題有分色
 2. ordered list 个數字用顯目个柑仔色
 
@@ -23,6 +24,6 @@
 
 ## UI 修改
 
-2. 改 which-key 設定：popup 改用 helix 直式風格。
-3. statusline mode 用文字顯示，無愛干焦用色水分別 mode。
-4. bufferline 用 <Tab>/<S-Tab> 切換 buffer。
+1. 改 which-key 設定：popup 改用 helix 直式風格。
+2. statusline mode 用文字顯示，無愛干焦用色水分別 mode。
+3. bufferline 用 <Tab>/<S-Tab> 切換 buffer。

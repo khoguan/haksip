@@ -1,0 +1,9 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "preset-ja-technical-writing": true,
+    "preset-japanese": true,
+    "preset-zh-cn": true,
+  }
+}

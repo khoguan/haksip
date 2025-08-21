@@ -1,0 +1,8 @@
+{
+    "rules": {
+        "max-doc-width": true
+    }
+    options: {
+        "max_width": 70
+    }
+}
