@@ -1,0 +1,1052 @@
+{
+  _map_sections = {
+    S = <1>{
+      desc = "󱂬 Session"
+    },
+    b = <2>{
+      desc = "󰓩 Buffers"
+    },
+    bs = <3>{
+      desc = "󰒺 Sort Buffers"
+    },
+    d = <4>{
+      desc = " Debugger"
+    },
+    f = <5>{
+      desc = " Find"
+    },
+    g = <6>{
+      desc = "󰊢 Git"
+    },
+    l = <7>{
+      desc = " Language Tools"
+    },
+    p = <8>{
+      desc = "󰏖 Packages"
+    },
+    t = <9>{
+      desc = " Terminal"
+    },
+    u = <10>{
+      desc = " UI/UX"
+    },
+    x = <11>{
+      desc = " Quickfix/Lists"
+    }
+  },
+  autocmds = {
+    GuessIndent = { {
+        callback = <function 1>,
+        desc = "Guess indentation when loading a file",
+        event = "BufReadPost",
+        group = 25
+      }, {
+        callback = <function 2>,
+        desc = "Guess indentation when saving a new file",
+        event = "BufNewFile",
+        group = 25
+      } },
+    astrolsp_createfiles_events = { {
+        callback = <function 3>,
+        desc = "trigger willCreateFiles before writing a new file",
+        event = "BufWritePre",
+        group = 27
+      }, {
+        callback = <function 4>,
+        desc = "trigger didCreateFiles after writing a new file",
+        event = "BufWritePost",
+        group = 27
+      } },
+    auto_lint = { {
+        callback = <function 5>,
+        desc = "Automatically lint with nvim-lint",
+        event = { "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" },
+        group = 30
+      } },
+    auto_quit = { {
+        callback = <function 6>,
+        desc = "Quit AstroNvim if more than one window is open and only sidebar windows are list",
+        event = "BufEnter",
+        group = 28
+      } },
+    bufferline = { {
+        callback = <function 7>,
+        desc = "Update buffers when adding new buffers",
+        event = { "BufAdd", "BufEnter", "TabNewEntered" },
+        group = 33
+      }, {
+        callback = <function 8>,
+        desc = "Update buffers when deleting buffers",
+        event = { "BufDelete", "TermClose" },
+        group = 33
+      } },
+    checktime = { {
+        command = "checktime",
+        desc = "Check if buffers changed on editor focus",
+        event = { "FocusGained", "TermClose", "TermLeave" },
+        group = 22
+      } },
+    create_dir = { {
+        callback = <function 9>,
+        desc = "Automatically create parent directories if they don't exist when saving a file",
+        event = "BufWritePre",
+        group = 20
+      } },
+    editorconfig_filetype = { {
+        callback = <function 10>,
+        desc = "Ensure editorconfig settings take highest precedence",
+        event = "FileType",
+        group = 31
+      } },
+    file_user_events = { {
+        callback = <function 11>,
+        desc = "AstroNvim user events for file detection (AstroFile and AstroGitFile)",
+        event = { "BufReadPost", "BufNewFile", "BufWritePost" },
+        group = 32
+      } },
+    heirline_colors = { {
+        callback = <function 12>,
+        desc = "Refresh heirline colors",
+        event = "User",
+        group = 18,
+        pattern = "AstroColorScheme"
+      } },
+    highlightyank = { {
+        callback = <function 13>,
+        desc = "Highlight yanked text",
+        event = "TextYankPost",
+        group = 16,
+        pattern = "*"
+      } },
+    large_buf_settings = { {
+        callback = <function 14>,
+        desc = "Disable certain functionality on very large files",
+        event = "User",
+        group = 34,
+        pattern = "AstroLargeBuf"
+      } },
+    markdown_opts_set = { {
+        callback = <function 15>,
+        desc = "Markdown options set",
+        event = "FileType",
+        group = 26,
+        pattern = "markdown"
+      } },
+    neotree_refresh = { {
+        callback = <function 16>,
+        desc = "Refresh Neo-Tree sources when closing lazygit",
+        event = "TermClose",
+        group = 15,
+        pattern = "*lazygit*"
+      } },
+    neotree_start = { {
+        callback = <function 17>,
+        desc = "Open Neo-Tree on startup with directory",
+        event = "BufEnter",
+        group = 17
+      } },
+    persistent_astroui_foldexpr = { {
+        callback = <function 18>,
+        event = "FileType",
+        group = 23
+      } },
+    q_close_windows = { {
+        callback = <function 19>,
+        desc = "Make q close help, man, quickfix, dap floats",
+        event = "BufWinEnter",
+        group = 19
+      }, {
+        callback = <function 20>,
+        desc = "Clean up q_close_windows cache",
+        event = "BufDelete",
+        group = 19
+      } },
+    resession_auto_save = { {
+        callback = <function 21>,
+        desc = "Save session on close",
+        event = "VimLeavePre",
+        group = 21
+      } },
+    restore_cursor = { {
+        callback = <function 22>,
+        desc = "Restore last cursor position when opening a file",
+        event = "BufReadPost",
+        group = 29
+      } },
+    terminal_settings = false,
+    unlist_quickfix = { {
+        callback = <function 23>,
+        desc = "Unlist quickfix buffers",
+        event = "FileType",
+        group = 24,
+        pattern = "qf"
+      } }
+  },
+  commands = {
+    AstroReload = { <function 24>,
+      desc = "Reload AstroNvim (Experimental)"
+    },
+    AstroRename = { <function 25>,
+      bang = true,
+      complete = "file",
+      desc = "Rename the current file, optionally new filename argument (:AstroRename! will overwrite existing files)",
+      nargs = "?"
+    },
+    AstroUpdate = { <function 26>,
+      desc = "Update Lazy and Mason"
+    },
+    AstroVersion = { <function 27>,
+      desc = "Check AstroNvim Version"
+    },
+    DiagnosticInfo = { <function 28>,
+      desc = "Show diagnostic details with source"
+    },
+    DiffOrig = { <function 29>,
+      desc = "Diff between current buffer and its saved file"
+    }
+  },
+  diagnostics = {
+    float = {
+      border = "rounded",
+      focused = false,
+      header = "",
+      prefix = "",
+      source = true,
+      style = "minimal"
+    },
+    jump = {
+      float = true
+    },
+    severity_sort = true,
+    signs = {
+      text = { "", "", "󰋼", "󰌵" }
+    },
+    underline = false,
+    update_in_insert = false,
+    virtual_text = false
+  },
+  features = {
+    autopairs = true,
+    cmp = false,
+    diagnostics = {
+      virtual_lines = false,
+      virtual_text = false
+    },
+    highlighturl = true,
+    large_buf = {
+      enabled = <function 30>,
+      line_length = 1000,
+      lines = 10000,
+      notify = true,
+      size = 262144
+    },
+    notifications = true
+  },
+  filetypes = {
+    extension = {
+      foo = "fooscript"
+    },
+    filename = {
+      [".foorc"] = "fooscript"
+    },
+    pattern = {
+      [".*/etc/foo/.*"] = "fooscript"
+    }
+  },
+  mappings = {
+    [""] = {},
+    ["!"] = {},
+    ["!a"] = {},
+    c = {},
+    ca = {},
+    i = {
+      ["<C-'>"] = { "<Esc><Cmd>ToggleTerm<CR>",
+        desc = "Toggle terminal"
+      },
+      ["<C-B>"] = { "<Esc>I",
+        desc = "Move cursor to first non-blank"
+      },
+      ["<C-E>"] = { "<Esc>A",
+        desc = "Move cursor to end of line"
+      },
+      ["<C-H>"] = { "<Left>",
+        desc = "Move cursor left"
+      },
+      ["<C-K>"] = { "<Up>",
+        desc = "Move cursor up"
+      },
+      ["<C-L>"] = { "<Right>",
+        desc = "Move cursor right"
+      },
+      ["<F7>"] = { "<Esc><Cmd>ToggleTerm<CR>",
+        desc = "Toggle terminal"
+      },
+      ["<M-k>"] = { "<C-k>",
+        desc = "Leader key for digraph",
+        remap = false
+      },
+      ["<NL>"] = { "<Down>",
+        desc = "Move cursor down"
+      }
+    },
+    ia = {},
+    l = {},
+    n = {
+      [",S"] = { <function 31>,
+        desc = "Flash Treesitter"
+      },
+      [",s"] = { <function 32>,
+        desc = "Flash"
+      },
+      ["<C-'>"] = { '<Cmd>execute v:count . "ToggleTerm"<CR>',
+        desc = "Toggle terminal"
+      },
+      ["<C-,>"] = { "<Cmd>vertical resize -2<CR>",
+        desc = "Make vsplit narrower"
+      },
+      ["<C-.>"] = { "<Cmd>vertical resize +2<CR>",
+        desc = "Make vsplit wider"
+      },
+      ["<C-Down>"] = { <function 33>,
+        desc = "Resize split down"
+      },
+      ["<C-H>"] = { <function 34>,
+        desc = "Move to left split"
+      },
+      ["<C-K>"] = { <function 35>,
+        desc = "Move to above split"
+      },
+      ["<C-L>"] = { <function 36>,
+        desc = "Move to right split"
+      },
+      ["<C-Left>"] = { <function 37>,
+        desc = "Resize split left"
+      },
+      ["<C-Q>"] = { "<Cmd>q!<CR>",
+        desc = "Force quit"
+      },
+      ["<C-Right>"] = { <function 38>,
+        desc = "Resize split right"
+      },
+      ["<C-S>"] = { "<Cmd>silent! update! | redraw<CR>",
+        desc = "Force write"
+      },
+      ["<C-Up>"] = { <function 39>,
+        desc = "Resize split up"
+      },
+      ["<F10>"] = { <function 40>,
+        desc = "Debugger: Step Over"
+      },
+      ["<F11>"] = { <function 41>,
+        desc = "Debugger: Step Into"
+      },
+      ["<F17>"] = { <function 42>,
+        desc = "Debugger: Stop"
+      },
+      ["<F21>"] = { <function 43>,
+        desc = "Debugger: Conditional Breakpoint"
+      },
+      ["<F23>"] = { <function 44>,
+        desc = "Debugger: Step Out"
+      },
+      ["<F29>"] = { <function 45>,
+        desc = "Debugger: Restart"
+      },
+      ["<F5>"] = { <function 46>,
+        desc = "Debugger: Start"
+      },
+      ["<F6>"] = { <function 47>,
+        desc = "Debugger: Pause"
+      },
+      ["<F7>"] = { '<Cmd>execute v:count . "ToggleTerm"<CR>',
+        desc = "Toggle terminal"
+      },
+      ["<F9>"] = { <function 48>,
+        desc = "Debugger: Toggle Breakpoint"
+      },
+      ["<Leader>dE"] = { <function 49>,
+        desc = "Evaluate Input"
+      },
+      ["<Leader>e"] = { "<Cmd>Neotree toggle<CR>",
+        desc = "Toggle Explorer"
+      },
+      ["<Leader>f"] = <table 5>,
+      ["<Leader>f<CR>"] = { <function 50>,
+        desc = "Resume previous search"
+      },
+      ["<Leader>fF"] = { <function 51>,
+        desc = "Find all files"
+      },
+      ["<Leader>fW"] = { <function 52>,
+        desc = "Find words in all files"
+      },
+      ["<Leader>fg"] = { <function 53>,
+        desc = "Find git files"
+      },
+      ["<Leader>fp"] = { <function 54>,
+        desc = "Find projects"
+      },
+      ["<Leader>fu"] = { <function 55>,
+        desc = "Find undo history"
+      },
+      ["<Leader>gb"] = { <function 56>,
+        desc = "Git branches"
+      },
+      ["<Leader>lS"] = { <function 57>,
+        desc = "Symbols outline"
+      },
+      ["<Leader>n"] = { "<Cmd>enew<CR>",
+        desc = "New File"
+      },
+      ["<Leader>q"] = { "<Cmd>confirm q<CR>",
+        desc = "Quit Window"
+      },
+      ["<Leader>th"] = { "<Cmd>ToggleTerm size=10 direction=horizontal<CR>",
+        desc = "ToggleTerm horizontal split"
+      },
+      ["<Leader>tt"] = { <function 58>,
+        desc = "ToggleTerm btm"
+      },
+      ["<Leader>tu"] = { <function 59>,
+        desc = "ToggleTerm gdu"
+      },
+      ["<Leader>uB"] = { "<cmd>set list!<cr>",
+        desc = "Toggle special chars (list mode)"
+      },
+      ["<Leader>uN"] = { <function 60>,
+        desc = "Toggle Notifications"
+      },
+      ["<Leader>uV"] = { <function 61>,
+        desc = "Toggle virtual lines"
+      },
+      ["<Leader>uZ"] = { <function 62>,
+        desc = "Toggle zen mode"
+      },
+      ["<Leader>ur"] = { <function 63>,
+        desc = "Toggle relativenumber"
+      },
+      ["<Leader>u|"] = { <function 64>,
+        desc = "Toggle indent guides"
+      },
+      ["<NL>"] = { <function 65>,
+        desc = "Move to below split"
+      },
+      ["<S-Tab>"] = { <function 66>,
+        desc = "Previous buffer"
+      },
+      ["<Space>/"] = { "gcc",
+        desc = "Toggle comment line",
+        remap = true
+      },
+      ["<Space>C"] = { <function 67>,
+        desc = "Force close buffer"
+      },
+      ["<Space>Q"] = { "<Cmd>confirm qall<CR>",
+        desc = "Exit AstroNvim"
+      },
+      ["<Space>R"] = { <function 68>,
+        desc = "Rename file"
+      },
+      ["<Space>S"] = <table 1>,
+      ["<Space>S."] = { <function 69>,
+        desc = "Load current dirsession"
+      },
+      ["<Space>SD"] = { <function 70>,
+        desc = "Delete a dirsession"
+      },
+      ["<Space>SF"] = { <function 71>,
+        desc = "Load a dirsession"
+      },
+      ["<Space>SS"] = { <function 72>,
+        desc = "Save this dirsession"
+      },
+      ["<Space>Sd"] = { <function 73>,
+        desc = "Delete a session"
+      },
+      ["<Space>Sf"] = { <function 74>,
+        desc = "Load a session"
+      },
+      ["<Space>Sl"] = { <function 75>,
+        desc = "Load last session"
+      },
+      ["<Space>Ss"] = { <function 76>,
+        desc = "Save this session"
+      },
+      ["<Space>St"] = { <function 77>,
+        desc = "Save this tab's session"
+      },
+      ["<Space>b"] = <table 2>,
+      ["<Space>bC"] = { <function 78>,
+        desc = "Close all buffers"
+      },
+      ["<Space>b\\"] = { <function 79>,
+        desc = "Horizontal split buffer from tabline"
+      },
+      ["<Space>bb"] = { <function 80>,
+        desc = "Select buffer from tabline"
+      },
+      ["<Space>bc"] = { <function 81>,
+        desc = "Close all buffers except current"
+      },
+      ["<Space>bd"] = { <function 82>,
+        desc = "Close buffer from tabline"
+      },
+      ["<Space>bf"] = { <function 83>,
+        desc = "Copy full file path to clipboard"
+      },
+      ["<Space>bl"] = { <function 84>,
+        desc = "Close all buffers to the left"
+      },
+      ["<Space>bp"] = { <function 85>,
+        desc = "Previous buffer"
+      },
+      ["<Space>br"] = { <function 86>,
+        desc = "Close all buffers to the right"
+      },
+      ["<Space>bs"] = <table 3>,
+      ["<Space>bse"] = { <function 87>,
+        desc = "By extension"
+      },
+      ["<Space>bsi"] = { <function 88>,
+        desc = "By buffer number"
+      },
+      ["<Space>bsm"] = { <function 89>,
+        desc = "By modification"
+      },
+      ["<Space>bsp"] = { <function 90>,
+        desc = "By full path"
+      },
+      ["<Space>bsr"] = { <function 91>,
+        desc = "By relative path"
+      },
+      ["<Space>b|"] = { <function 92>,
+        desc = "Vertical split buffer from tabline"
+      },
+      ["<Space>c"] = { <function 93>,
+        desc = "Close buffer"
+      },
+      ["<Space>d"] = <table 4>,
+      ["<Space>dB"] = { <function 94>,
+        desc = "Clear Breakpoints"
+      },
+      ["<Space>dC"] = { <function 95>,
+        desc = "Conditional Breakpoint (S-F9)"
+      },
+      ["<Space>dO"] = { <function 96>,
+        desc = "Step Out (S-F11)"
+      },
+      ["<Space>dQ"] = { <function 97>,
+        desc = "Terminate Session (S-F5)"
+      },
+      ["<Space>dR"] = { <function 98>,
+        desc = "Toggle REPL"
+      },
+      ["<Space>db"] = { <function 99>,
+        desc = "Toggle Breakpoint (F9)"
+      },
+      ["<Space>dc"] = { <function 100>,
+        desc = "Start/Continue (F5)"
+      },
+      ["<Space>dh"] = { <function 101>,
+        desc = "Debugger Hover"
+      },
+      ["<Space>di"] = { <function 102>,
+        desc = "Step Into (F11)"
+      },
+      ["<Space>do"] = { <function 103>,
+        desc = "Step Over (F10)"
+      },
+      ["<Space>dp"] = { <function 104>,
+        desc = "Pause (F6)"
+      },
+      ["<Space>dq"] = { <function 105>,
+        desc = "Close Session"
+      },
+      ["<Space>dr"] = { <function 106>,
+        desc = "Restart (C-F5)"
+      },
+      ["<Space>ds"] = { <function 107>,
+        desc = "Run To Cursor"
+      },
+      ["<Space>du"] = { <function 108>,
+        desc = "Toggle Debugger UI"
+      },
+      ["<Space>f'"] = { <function 109>,
+        desc = "Find marks"
+      },
+      ["<Space>fC"] = { <function 110>,
+        desc = "Find commands"
+      },
+      ["<Space>fO"] = { <function 111>,
+        desc = "Find old files (cwd)"
+      },
+      ["<Space>fT"] = { "<Cmd>TodoTelescope<CR>",
+        desc = "Find TODOs"
+      },
+      ["<Space>fa"] = { <function 112>,
+        desc = "Find AstroNvim config files"
+      },
+      ["<Space>fb"] = { <function 113>,
+        desc = "Find buffers"
+      },
+      ["<Space>fc"] = { <function 114>,
+        desc = "Find word under cursor"
+      },
+      ["<Space>ff"] = { <function 115>,
+        desc = "Find files"
+      },
+      ["<Space>fh"] = { <function 116>,
+        desc = "Find help"
+      },
+      ["<Space>fk"] = { <function 117>,
+        desc = "Find keymaps"
+      },
+      ["<Space>fl"] = { <function 118>,
+        desc = "Find lines"
+      },
+      ["<Space>fm"] = { <function 119>,
+        desc = "Find man"
+      },
+      ["<Space>fn"] = { <function 120>,
+        desc = "Find notifications"
+      },
+      ["<Space>fo"] = { <function 121>,
+        desc = "Find old files"
+      },
+      ["<Space>fr"] = { <function 122>,
+        desc = "Find registers"
+      },
+      ["<Space>fs"] = { <function 123>,
+        desc = "Find buffers/recent/files"
+      },
+      ["<Space>ft"] = { <function 124>,
+        desc = "Find themes"
+      },
+      ["<Space>fw"] = { <function 125>,
+        desc = "Find words"
+      },
+      ["<Space>g"] = <table 6>,
+      ["<Space>gC"] = { <function 126>,
+        desc = "Git commits (current file)"
+      },
+      ["<Space>gT"] = { <function 127>,
+        desc = "Git stash"
+      },
+      ["<Space>gc"] = { <function 128>,
+        desc = "Git commits (repository)"
+      },
+      ["<Space>gg"] = { <function 129>,
+        desc = "ToggleTerm lazygit"
+      },
+      ["<Space>go"] = { <function 130>,
+        desc = "Git browse (open)"
+      },
+      ["<Space>gt"] = { <function 131>,
+        desc = "Git status"
+      },
+      ["<Space>h"] = { <function 132>,
+        desc = "Home Screen"
+      },
+      ["<Space>l"] = <table 7>,
+      ["<Space>lD"] = { <function 133>,
+        desc = "Search diagnostics"
+      },
+      ["<Space>ld"] = { <function 134>,
+        desc = "Hover diagnostics"
+      },
+      ["<Space>ls"] = { <function 135>,
+        desc = "Search symbols"
+      },
+      ["<Space>o"] = { <function 136>,
+        desc = "Toggle Explorer Focus"
+      },
+      ["<Space>p"] = <table 8>,
+      ["<Space>pM"] = { "<Cmd>MasonToolsUpdate<CR>",
+        desc = "Mason Update"
+      },
+      ["<Space>pS"] = { <function 137>,
+        desc = "Plugins Sync"
+      },
+      ["<Space>pU"] = { <function 138>,
+        desc = "Plugins Update"
+      },
+      ["<Space>pa"] = { <function 139>,
+        desc = "Update Lazy and Mason"
+      },
+      ["<Space>pi"] = { <function 140>,
+        desc = "Plugins Install"
+      },
+      ["<Space>pm"] = { <function 141>,
+        desc = "Mason Installer"
+      },
+      ["<Space>ps"] = { <function 142>,
+        desc = "Plugins Status"
+      },
+      ["<Space>pu"] = { <function 143>,
+        desc = "Plugins Check Updates"
+      },
+      ["<Space>t"] = <table 9>,
+      ["<Space>tf"] = { "<Cmd>ToggleTerm direction=float<CR>",
+        desc = "ToggleTerm float"
+      },
+      ["<Space>tl"] = { <function 129>,
+        desc = "ToggleTerm lazygit"
+      },
+      ["<Space>tn"] = { <function 144>,
+        desc = "ToggleTerm node"
+      },
+      ["<Space>tp"] = { <function 145>,
+        desc = "ToggleTerm python"
+      },
+      ["<Space>tv"] = { "<Cmd>ToggleTerm size=80 direction=vertical<CR>",
+        desc = "ToggleTerm vertical split"
+      },
+      ["<Space>u"] = <table 10>,
+      ["<Space>u("] = { <function 146>,
+        desc = "Toggle rainbow delimeters (buffer)"
+      },
+      ["<Space>u>"] = { <function 147>,
+        desc = "Toggle foldcolumn"
+      },
+      ["<Space>uA"] = { <function 148>,
+        desc = "Toggle rooter autochdir"
+      },
+      ["<Space>uC"] = { <function 149>,
+        desc = "Toggle autocompletion (global)"
+      },
+      ["<Space>uD"] = { <function 150>,
+        desc = "Dismiss notifications"
+      },
+      ["<Space>uS"] = { <function 151>,
+        desc = "Toggle conceal"
+      },
+      ["<Space>ua"] = { <function 152>,
+        desc = "Toggle autopairs"
+      },
+      ["<Space>ub"] = { <function 153>,
+        desc = "Toggle background"
+      },
+      ["<Space>uc"] = { <function 154>,
+        desc = "Toggle autocompletion (buffer)"
+      },
+      ["<Space>ud"] = { <function 155>,
+        desc = "Toggle diagnostics"
+      },
+      ["<Space>ug"] = { <function 156>,
+        desc = "Toggle signcolumn"
+      },
+      ["<Space>ui"] = { <function 157>,
+        desc = "Change indent setting"
+      },
+      ["<Space>ul"] = { <function 158>,
+        desc = "Toggle statusline"
+      },
+      ["<Space>un"] = { <function 159>,
+        desc = "Change line numbering"
+      },
+      ["<Space>up"] = { <function 160>,
+        desc = "Toggle paste mode"
+      },
+      ["<Space>us"] = { <function 161>,
+        desc = "Toggle spellcheck"
+      },
+      ["<Space>ut"] = { <function 162>,
+        desc = "Toggle tabline"
+      },
+      ["<Space>uu"] = { <function 163>,
+        desc = "Toggle URL highlight"
+      },
+      ["<Space>uv"] = { <function 164>,
+        desc = "Toggle virtual text"
+      },
+      ["<Space>uw"] = { <function 165>,
+        desc = "Toggle wrap"
+      },
+      ["<Space>uy"] = { <function 166>,
+        desc = "Toggle syntax highlight (buffer)"
+      },
+      ["<Space>uz"] = { <function 167>,
+        desc = "Toggle color highlight"
+      },
+      ["<Space>w"] = { "<Cmd>w<CR>",
+        desc = "Save"
+      },
+      ["<Space>x"] = <table 11>,
+      ["<Space>xl"] = { "<Cmd>lopen<CR>",
+        desc = "Location List"
+      },
+      ["<Space>xq"] = { "<Cmd>copen<CR>",
+        desc = "Quickfix List"
+      },
+      ["<Tab>"] = { <function 168>,
+        desc = "Next buffer"
+      },
+      ["<lt>b"] = { <function 169>,
+        desc = "Move buffer tab left"
+      },
+      [">b"] = { <function 170>,
+        desc = "Move buffer tab right"
+      },
+      J = { <function 171>,
+        desc = "Remap `J` to sidewalk Treesitter's bug"
+      },
+      ["[T"] = { <function 172>,
+        desc = "Previous TODO comment"
+      },
+      ["[b"] = { <function 173>,
+        desc = "Previous buffer"
+      },
+      ["[e"] = { <function 174>,
+        desc = "Previous error"
+      },
+      ["[t"] = { <function 175>,
+        desc = "Previous tab"
+      },
+      ["[w"] = { <function 176>,
+        desc = "Previous warning"
+      },
+      ["\\"] = { "<Cmd>split<CR>",
+        desc = "Horizontal Split"
+      },
+      ["]T"] = { <function 177>,
+        desc = "Next TODO comment"
+      },
+      ["]b"] = { <function 178>,
+        desc = "Next buffer"
+      },
+      ["]e"] = { <function 179>,
+        desc = "Next error"
+      },
+      ["]t"] = { <function 180>,
+        desc = "Next tab"
+      },
+      ["]w"] = { <function 181>,
+        desc = "Next warning"
+      },
+      gcO = { "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>",
+        desc = "Add Comment Above"
+      },
+      gco = { "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>",
+        desc = "Add Comment Below"
+      },
+      gl = { <function 182>,
+        desc = "Hover diagnostics"
+      },
+      j = <12>{ "v:count == 0 ? 'gj' : 'j'",
+        desc = "Move cursor down",
+        expr = true,
+        silent = true
+      },
+      k = <13>{ "v:count == 0 ? 'gk' : 'k'",
+        desc = "Move cursor up",
+        expr = true,
+        silent = true
+      },
+      ["|"] = { "<Cmd>vsplit<CR>",
+        desc = "Vertical Split"
+      }
+    },
+    o = {
+      [",R"] = { <function 183>,
+        desc = "Treesitter Search"
+      },
+      [",S"] = { <function 184>,
+        desc = "Flash Treesitter"
+      },
+      [",s"] = { <function 185>,
+        desc = "Flash"
+      },
+      ["<localleader>r"] = { <function 186>,
+        desc = "Remote Flash"
+      }
+    },
+    s = {},
+    t = {
+      ["<C-'>"] = { "<Cmd>ToggleTerm<CR>",
+        desc = "Toggle terminal"
+      },
+      ["<C-H>"] = { <function 187>,
+        desc = "Terminal left window navigation"
+      },
+      ["<C-K>"] = { <function 188>,
+        desc = "Terminal up window navigation"
+      },
+      ["<C-L>"] = { <function 189>,
+        desc = "Terminal right window navigation"
+      },
+      ["<Esc>"] = { "<C-\\><C-n>",
+        desc = "Escape from terminal"
+      },
+      ["<F7>"] = { "<Cmd>ToggleTerm<CR>",
+        desc = "Toggle terminal"
+      },
+      ["<NL>"] = { <function 190>,
+        desc = "Terminal down window navigation"
+      }
+    },
+    v = {
+      ["<S-Tab>"] = { "<gv",
+        desc = "Unindent line"
+      },
+      ["<Space>d"] = <table 4>,
+      ["<Space>dE"] = { <function 191>,
+        desc = "Evaluate Input"
+      },
+      ["<Tab>"] = { ">gv",
+        desc = "Indent line"
+      }
+    },
+    x = {
+      [",R"] = { <function 192>,
+        desc = "Treesitter Search"
+      },
+      [",S"] = { <function 193>,
+        desc = "Flash Treesitter"
+      },
+      ["<Space>/"] = { "gc",
+        desc = "Toggle comment",
+        remap = true
+      },
+      ["<Space>go"] = { <function 194>,
+        desc = "Git browse (open)"
+      },
+      ["<localleader>s"] = { <function 195>,
+        desc = "Flash"
+      },
+      j = <table 12>,
+      k = <table 13>
+    }
+  },
+  on_keys = {
+    auto_hlsearch = { <function 196> }
+  },
+  options = {
+    g = {
+      markdown_recommended_style = 0,
+      nightflyCursorColor = true,
+      nightflyNormalFloat = true,
+      nightflyUnderlineMatchParen = true,
+      nightflyVirtualTextColor = true,
+      nightflyWinSeparator = 2
+    },
+    opt = {
+      backspace = { "indent", "eol", "start", "nostop" },
+      breakindent = true,
+      clipboard = "unnamedplus",
+      cmdheight = 1,
+      completeopt = { "menu", "menuone", "noselect" },
+      confirm = true,
+      copyindent = true,
+      cursorline = true,
+      diffopt = { "internal", "filler", "closeoff", "linematch:40", "algorithm:histogram", "linematch:60" },
+      expandtab = true,
+      fillchars = {
+        eob = " "
+      },
+      foldcolumn = "1",
+      foldenable = true,
+      foldexpr = "v:lua.require'astroui.folding'.foldexpr()",
+      foldlevel = 99,
+      foldmethod = "expr",
+      foldtext = "",
+      ignorecase = true,
+      infercase = true,
+      jumpoptions = {},
+      laststatus = 3,
+      linebreak = false,
+      list = true,
+      listchars = {
+        extends = "⟩",
+        nbsp = "␣",
+        precedes = "⟨",
+        tab = "⇥ ",
+        trail = "·"
+      },
+      mouse = "a",
+      number = true,
+      preserveindent = true,
+      pumheight = 10,
+      relativenumber = true,
+      shiftround = true,
+      shiftwidth = 0,
+      shortmess = {
+        C = true,
+        F = true,
+        I = true,
+        O = true,
+        T = true,
+        c = true,
+        l = true,
+        o = true,
+        s = true,
+        t = true
+      },
+      showbreak = "»",
+      showcmd = true,
+      showmode = false,
+      showtabline = 2,
+      signcolumn = "yes",
+      smartcase = true,
+      spell = false,
+      splitbelow = true,
+      splitright = true,
+      tabclose = "uselast",
+      tabstop = 2,
+      termguicolors = true,
+      timeoutlen = 300,
+      title = true,
+      undofile = true,
+      updatetime = 300,
+      virtualedit = "block",
+      wrap = true,
+      writebackup = false
+    },
+    t = {
+      bufs = { 1 }
+    }
+  },
+  rooter = {
+    autochdir = false,
+    detector = { "lsp", { ".git", "_darcs", ".hg", ".bzr", ".svn" }, { "lua", "MakeFile", "package.json" } },
+    enabled = true,
+    ignore = {
+      dirs = {},
+      servers = {}
+    },
+    notify = true,
+    scope = "global"
+  },
+  sessions = {
+    autosave = {
+      cwd = true,
+      last = true
+    },
+    ignore = {
+      buftypes = {},
+      dirs = {},
+      filetypes = { "gitcommit", "gitrebase" }
+    }
+  },
+  signs = {
+    DapBreakpoint = {
+      text = "",
+      texthl = "DiagnosticInfo"
+    },
+    DapBreakpointCondition = {
+      text = "",
+      texthl = "DiagnosticInfo"
+    },
+    DapBreakpointRejected = {
+      text = "",
+      texthl = "DiagnosticError"
+    },
+    DapLogPoint = {
+      text = "󰛿",
+      texthl = "DiagnosticInfo"
+    },
+    DapStopped = {
+      text = "󰁕",
+      texthl = "DiagnosticWarn"
+    }
+  }
+}
