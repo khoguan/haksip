@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "remark-preset-lint-recommended",
+    ["remark-lint-list-item-indent", "one"],
+    "remark-lint-no-duplicate-definitions",
+    "remark-lint-no-undefined-references"
+  ],
+  "settings": {
+    "bullet": "-",
+    "emphasis": "*",
+    "strong": "*",
+    "listItemIndent": "one",
+    "rule": "-",
+    "ruleSpaces": false,
+    "ruleRepetition": 3,
+    "fences": true,
+    "fence": "`"
+  }
+}

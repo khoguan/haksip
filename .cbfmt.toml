@@ -1,0 +1,26 @@
+# cbfmt configuration file for formatting code blocks in markdown files
+# Using Mason-installed formatters from ~/.local/share/nvim/mason/bin/
+#
+# Format: Each entry is language_name = ["command with args"]
+# Commands must read from stdin and write to stdout
+
+[languages]
+lua = ["~/.local/share/nvim/mason/bin/stylua -"]
+bash = ["~/.local/share/nvim/mason/bin/shfmt -i 2 -bn -ci -sr"]
+sh = ["~/.local/share/nvim/mason/bin/shfmt -i 2 -bn -ci -sr"]
+zsh = ["~/.local/share/nvim/mason/bin/shfmt -ln bash -i 2 -bn -ci -sr"]
+
+# Python formatting - uncomment when black is installed via Mason or system-wide
+python = ["black --fast -"]
+python3 = ["black --fast -"]
+
+# Additional languages can be added as needed:
+# javascript = ["prettier --parser babel"]
+# typescript = ["prettier --parser typescript"]  
+# json = ["jq ."]
+# yaml = ["prettier --parser yaml"]
+# toml = ["taplo fmt -"]
+# rust = ["rustfmt"]
+# go = ["gofmt"]
+# c = ["clang-format"]
+# cpp = ["clang-format"]
